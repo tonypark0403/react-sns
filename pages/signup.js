@@ -10,6 +10,17 @@ const SignUp = () => {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [term, setTerm] = useState(false);
 
+  const onSubmit = e => {
+    e.preventDefault();
+    console.log("Submitted data : ", {
+      id,
+      nick,
+      password,
+      passwordCheck,
+      term
+    });
+  };
+
   const onChangeId = e => {
     const { value } = e.target;
     setId(value);
@@ -17,7 +28,7 @@ const SignUp = () => {
 
   const onChangeNick = e => {
     const { value } = e.target;
-    setId(value);
+    setNick(value);
   };
 
   const onChangePassword = e => {
@@ -35,10 +46,6 @@ const SignUp = () => {
     setTerm(checked);
   };
 
-  const onSubmit = e => {
-    e.preventDefault();
-    console.log("submit");
-  };
   return (
     <>
       <Head>
@@ -93,7 +100,9 @@ const SignUp = () => {
             </Checkbox>
           </div>
           <div>
-            <Button type="primary">Register</Button>
+            <Button type="primary" htmlType="submit">
+              Register
+            </Button>
           </div>
         </Form>
       </AppLayout>
