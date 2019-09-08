@@ -1,9 +1,8 @@
 import React from "react";
-import Link from "next/link";
-import Head from "next/head";
 import AppLayout from "../components/layout/AppLayout";
+import Head from "next/head";
 
-const Home = () => {
+const Profile = () => {
   return (
     <>
       <Head>
@@ -14,10 +13,10 @@ const Home = () => {
         />
       </Head>
       <AppLayout>
-        <div>Hello, Next!</div>
+        <div>My Profile</div>
       </AppLayout>
     </>
   );
 };
 
-export default Home;
+export default Profile;
