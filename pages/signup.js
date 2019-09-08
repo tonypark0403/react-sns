@@ -4,10 +4,28 @@ import Head from "next/head";
 import { Input, Checkbox, Button, Form } from "antd";
 
 const SignUp = () => {
-  const [id, setId] = useState("");
-  const [nick, setNick] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
+  const useInput = (initValue = null) => {
+    const [value, setValue] = useState(initValue);
+    const eventHandler = e => {
+      const { name, value } = e.target;
+      setValue(value);
+      if (name === "user-password-check") {
+        setPasswordError(value !== password);
+      }
+    };
+    return [value, eventHandler];
+  };
+
+  const onChangeTerm = e => {
+    const { checked } = e.target;
+    setTerm(checked);
+    setTermError(false);
+  };
+
+  const [id, onChangeId] = useInput("");
+  const [nick, onChangeNick] = useInput("");
+  const [password, onChangePassword] = useInput("");
+  const [passwordCheck, onChangePasswordCheck] = useInput("");
   const [term, setTerm] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [termError, setTermError] = useState(false);
@@ -27,33 +45,6 @@ const SignUp = () => {
       passwordCheck,
       term
     });
-  };
-
-  const onChangeId = e => {
-    const { value } = e.target;
-    setId(value);
-  };
-
-  const onChangeNick = e => {
-    const { value } = e.target;
-    setNick(value);
-  };
-
-  const onChangePassword = e => {
-    const { value } = e.target;
-    setPassword(value);
-  };
-
-  const onChangePasswordCheck = e => {
-    const { value } = e.target;
-    setPasswordCheck(value);
-    setPasswordError(value !== password);
-  };
-
-  const onChangeTerm = e => {
-    const { checked } = e.target;
-    setTerm(checked);
-    setTermError(false);
   };
 
   return (
