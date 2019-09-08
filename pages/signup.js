@@ -9,9 +9,17 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [term, setTerm] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [termError, setTermError] = useState(false);
 
   const onSubmit = e => {
     e.preventDefault();
+    if (password !== passwordCheck) {
+      return setPasswordError(true);
+    }
+    if (!term) {
+      return setTermError(true);
+    }
     console.log("Submitted data : ", {
       id,
       nick,
@@ -39,11 +47,13 @@ const SignUp = () => {
   const onChangePasswordCheck = e => {
     const { value } = e.target;
     setPasswordCheck(value);
+    setPasswordError(value !== password);
   };
 
   const onChangeTerm = e => {
     const { checked } = e.target;
     setTerm(checked);
+    setTermError(false);
   };
 
   return (
@@ -93,13 +103,19 @@ const SignUp = () => {
               required
               onChange={onChangePasswordCheck}
             />
+            {passwordError && (
+              <div style={{ color: "red" }}> Please match the password!</div>
+            )}
           </div>
           <div>
             <Checkbox name="user-term" checked={term} onChange={onChangeTerm}>
               I have agreed all above.
             </Checkbox>
+            {termError && (
+              <div style={{ color: "red" }}> Please check the agreement!</div>
+            )}
           </div>
-          <div>
+          <div style={{ marginTop: 10 }}>
             <Button type="primary" htmlType="submit">
               Register
             </Button>
