@@ -7,10 +7,14 @@ const AppLayout = ({ children }) => {
     <div>
       <Menu mode="horizontal">
         <Menu.Item key="home" style={{ fontWeight: 600 }}>
-          <Link href="/">TonySNS</Link>
+          <Link href="/">
+            <a>TonySNS</a>
+          </Link>
         </Menu.Item>
         <Menu.Item key="profile">
-          <Link href="/profile">Profile</Link>
+          <Link href="/profile">
+            <a>Profile</a>
+          </Link>
         </Menu.Item>
         <Menu.Item key="mail">
           <Input.Search enterButton style={{ verticalAlign: "middle" }} />
