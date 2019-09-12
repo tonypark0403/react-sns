@@ -1,5 +1,7 @@
 import React from "react";
 import Head from "next/head";
+import PropTypes from "prop-types";
+
 import AppLayout from "../components/layout/AppLayout";
 
 const TonySNS = ({ Component }) => {
@@ -17,6 +19,10 @@ const TonySNS = ({ Component }) => {
       </AppLayout>
     </>
   );
+};
+
+TonySNS.propTypes = {
+  Component: PropTypes.elementType
 };
 
 export default TonySNS;
