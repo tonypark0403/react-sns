@@ -1,7 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import { Menu, Input, Button, Row, Col, Card, Avatar } from "antd";
 import PropTypes from "prop-types";
+import { Menu, Input, Row, Col } from "antd";
+import LoginForm from "../LoginForm";
+import UserInfo from "../UserInfo";
 
 const dummy = {
   User: {
@@ -11,16 +13,12 @@ const dummy = {
   },
   Post: [],
   Followings: [],
-  Followers: []
+  Followers: [],
+  isLoggedIn: false
 };
 
 const AppLayout = ({ children }) => {
-  const {
-    User: { photo, nickname },
-    Post,
-    Followings,
-    Followers
-  } = dummy;
+  const { User, Post, Followings, Followers } = dummy;
   return (
     <div>
       <Menu mode="horizontal">
@@ -38,39 +36,18 @@ const AppLayout = ({ children }) => {
           <Input.Search enterButton style={{ verticalAlign: "middle" }} />
         </Menu.Item>
       </Menu>
-      <Link href="/signup">
-        <Button>Sign Up</Button>
-      </Link>
       <Row>
         <Col xs={24} md={6}>
-          <Card
-            actions={[
-              <div key="twit">
-                Twit
-                <br />
-                {Post.length}
-              </div>,
-              <div key="following">
-                Following
-                <br />
-                {Followings.length}
-              </div>,
-              <div key="follower">
-                Follower
-                <br />
-                {Followers.length}
-              </div>
-            ]}
-          >
-            <Card.Meta
-              avatar={
-                <Avatar src={photo} style={{ backgroundColor: "#87d068" }}>
-                  {nickname[0].toUpperCase}
-                </Avatar>
-              }
-              title={nickname}
+          {dummy.isLoggedIn ? (
+            <UserInfo
+              User={User}
+              Post={Post}
+              Followings={Followings}
+              Followers={Followers}
             />
-          </Card>
+          ) : (
+            <LoginForm />
+          )}
         </Col>
         <Col xs={24} md={12}>
           {children}

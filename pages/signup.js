@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { Input, Checkbox, Button, Form } from "antd";
 import TextInput from "../components/input/TextInput";
+import { useInput } from "../components/custom-hook/UseInput";
 
 const SignUp = () => {
   const [passwordCheck, setPasswordCheck] = useState("");
@@ -8,15 +9,7 @@ const SignUp = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [termError, setTermError] = useState(false);
 
-  //this function should be first than used
-  const useInput = (initValue = null) => {
-    const [value, setValue] = useState(initValue);
-    const eventHandler = useCallback(e => {
-      setValue(e.target.value);
-    }, []);
-    return [value, eventHandler];
-  };
-
+  //custom-hook
   const [id, onChangeId] = useInput("");
   const [nick, onChangeNick] = useInput("");
   const [password, onChangePassword] = useInput("");
