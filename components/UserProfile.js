@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Card, Avatar } from "antd";
 
-const UserInfo = ({ User, Post, Followings, Followers }) => {
+const UserProfile = ({ User, Post, Followings, Followers }) => {
   const { photo, nickname } = User;
   return (
     <Card
@@ -36,11 +36,11 @@ const UserInfo = ({ User, Post, Followings, Followers }) => {
   );
 };
 
-UserInfo.propTypes = {
+UserProfile.propTypes = {
   User: PropTypes.object,
   Post: PropTypes.array,
   Followings: PropTypes.array,
   Followers: PropTypes.array
 };
 
-export default UserInfo;
+export default UserProfile;

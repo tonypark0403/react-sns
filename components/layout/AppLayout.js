@@ -3,7 +3,7 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import { Menu, Input, Row, Col } from "antd";
 import LoginForm from "../LoginForm";
-import UserInfo from "../UserInfo";
+import UserProfile from "../UserProfile";
 
 const dummy = {
   User: {
@@ -38,22 +38,15 @@ const AppLayout = ({ children }) => {
       </Menu>
       <Row gutter={8}>
         <Col xs={24} md={6}>
-          {dummy.isLoggedIn ? (
-            <UserInfo
-              User={User}
-              Post={Post}
-              Followings={Followings}
-              Followers={Followers}
-            />
-          ) : (
-            <LoginForm />
-          )}
+          {dummy.isLoggedIn ? <UserProfile {...dummy} /> : <LoginForm />}
         </Col>
         <Col xs={24} md={12}>
           {children}
         </Col>
         <Col xs={24} md={6}>
-          Third
+          <Link href="/">
+            <a target="_blank">Made by Tony@2019</a>
+          </Link>
         </Col>
       </Row>
     </div>

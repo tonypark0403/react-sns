@@ -1,20 +1,11 @@
 import React from "react";
-import { Form, Input, Button, List, Card, Icon } from "antd";
+import { Button, List, Card, Icon } from "antd";
+import NicknameEditForm from "../components/NicknameEditForm";
 
 const Profile = () => {
   return (
     <div>
-      <Form
-        style={{
-          marginTop: "20px",
-          marginBottom: "20px",
-          border: "1px solid #d9d9d9",
-          padding: "20px"
-        }}
-      >
-        <Input addonBefore="Nickname" />
-        <Button type="primary">Update</Button>
-      </Form>
+      <NicknameEditForm />
       <List
         style={{ marginBottom: "20px" }}
         grid={{ gutter: 4, xs: 2, md: 3 }}
