@@ -12,4 +12,5 @@ Blog features implemented by react family libraries
 
 - [x] Initialize project
 - [x] next
-- [x] ant
+- [x] ant design
+- [ ] redux
