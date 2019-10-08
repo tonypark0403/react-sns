@@ -1,5 +1,3 @@
-import { LOG_IN, LOG_OUT, SIGN_UP } from "../actions/user/userActionTypes";
-
 const dummyUser = {
   photo:
     "https://i.pinimg.com/564x/ac/b0/f6/acb0f641af4e6981e0537d2363006eec.jpg",
@@ -9,6 +7,26 @@ const dummyUser = {
   Followers: [],
   signUpData: {}
 };
+
+const LOG_IN = "LOG_IN";
+const LOG_OUT = "LOG_OUT";
+const SIGN_UP = "SIGN_UP";
+
+export const loginAction = id => ({
+  type: LOG_IN,
+  data: {
+    nickname: id
+  }
+});
+
+export const logoutAction = {
+  type: LOG_OUT
+};
+
+export const signupAction = data => ({
+  type: SIGN_UP,
+  data
+});
 
 const initialState = {
   isLoggedIn: false,

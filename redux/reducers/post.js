@@ -1,4 +1,20 @@
-import { ADD_POST, ADD_DUMMY } from "../actions/post/postActionTypes";
+const ADD_POST = "ADD_POST";
+const ADD_DUMMY = "ADD_DUMMY";
+
+export const addPost = {
+  type: ADD_POST
+};
+
+export const addDummy = {
+  type: ADD_DUMMY,
+  data: {
+    content: "Hello",
+    userId: 1,
+    user: {
+      nickname: "dream"
+    }
+  }
+};
 
 const initialState = {
   mainPosts: [
