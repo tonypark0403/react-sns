@@ -1,9 +1,12 @@
 import React, { useCallback, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Input, Checkbox, Button, Form } from "antd";
 import TextInput from "../components/input/TextInput";
 import { useInput } from "../components/custom-hook/UseInput";
+import { signupAction } from "../redux/actions/user/userAction";
 
 const SignUp = () => {
+  const dispatch = useDispatch();
   const [passwordCheck, setPasswordCheck] = useState("");
   const [term, setTerm] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
@@ -45,6 +48,13 @@ const SignUp = () => {
         passwordCheck,
         term
       });
+      dispatch(
+        signupAction({
+          id,
+          nick,
+          password
+        })
+      );
     },
     [password, passwordCheck, term]
   ); //useCallback은 states들도 dependencies array에 넣어야함

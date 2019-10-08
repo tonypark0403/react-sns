@@ -1,4 +1,4 @@
-import { LOG_IN, LOG_OUT } from "../actions/user/userActionTypes";
+import { LOG_IN, LOG_OUT, SIGN_UP } from "../actions/user/userActionTypes";
 
 const dummyUser = {
   photo:
@@ -7,7 +7,7 @@ const dummyUser = {
   Post: [],
   Followings: [],
   Followers: [],
-  isLoggedIn: false
+  signUpData: {}
 };
 
 const initialState = {
@@ -29,6 +29,12 @@ const user = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         user: null
+      };
+    }
+    case SIGN_UP: {
+      return {
+        ...state,
+        signUpData: action.data
       };
     }
     default: {
