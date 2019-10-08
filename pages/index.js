@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import PostForm from "../components/PostForm";
 import PostCardList from "../components/PostCardList";
-import { loginAction, logoutAction } from "../redux/actions/user/userAction";
+import { loginAction, logoutAction } from "../redux/reducers/user";
 
 const Home = () => {
   //store에 state는 useSelector를 이용

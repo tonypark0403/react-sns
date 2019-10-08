@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Input, Checkbox, Button, Form } from "antd";
 import TextInput from "../components/input/TextInput";
 import { useInput } from "../components/custom-hook/UseInput";
-import { signupAction } from "../redux/actions/user/userAction";
+import { signupAction } from "../redux/reducers/user";
 
 const SignUp = () => {
   const dispatch = useDispatch();
