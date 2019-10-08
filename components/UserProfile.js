@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import { Card, Avatar } from "antd";
+import { Card, Avatar, Button } from "antd";
+import { logoutAction } from "../redux/actions/user/userAction";
 
-const UserProfile = ({ User, Post, Followings, Followers }) => {
-  const { photo, nickname } = User;
+const UserProfile = () => {
+  const user = useSelector(state => state.user.user);
+  const dispatch = useDispatch();
+  const { photo, nickname, Post, Followings, Followers } = user;
+  const onLogout = useCallback(() => {
+    dispatch(logoutAction);
+  }, []); // in case of sending to child component
   return (
     <Card
       actions={[
@@ -32,12 +39,14 @@ const UserProfile = ({ User, Post, Followings, Followers }) => {
         }
         title={nickname}
       />
+      <Button onClick={onLogout}>Logout</Button>
     </Card>
   );
 };
 
 UserProfile.propTypes = {
-  User: PropTypes.object,
+  nickname: PropTypes.string,
+  photo: PropTypes.string,
   Post: PropTypes.array,
   Followings: PropTypes.array,
   Followers: PropTypes.array

@@ -1,11 +1,11 @@
 import * as actionTypes from "./userActionTypes";
 
-export const loginAction = {
+export const loginAction = id => ({
   type: actionTypes.LOG_IN,
   data: {
-    nickname: "dream"
+    nickname: id
   }
-};
+});
 
 export const logoutAction = {
   type: actionTypes.LOG_OUT

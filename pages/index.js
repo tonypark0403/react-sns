@@ -1,31 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import PostForm from "../components/PostForm";
 import PostCardList from "../components/PostCardList";
-
-const dummy = {
-  isLoggedIn: true,
-  imagePaths: [],
-  mainPosts: [
-    {
-      User: {
-        id: 1,
-        photo:
-          "https://i.pinimg.com/564x/ac/b0/f6/acb0f641af4e6981e0537d2363006eec.jpg",
-        nickname: "Tony"
-      },
-      content: "Welcome to my Blog",
-      img:
-        "https://i.pinimg.com/564x/82/de/0e/82de0e9e5e08d3b5995f6e0af62e9c1e.jpg",
-      createdAt: new Date()
-    }
-  ]
-};
+import { loginAction, logoutAction } from "../redux/actions/user/userAction";
 
 const Home = () => {
+  //store에 state는 useSelector를 이용
+  const { isLoggedIn, user } = useSelector(state => state.user); // state는 rootReducer에 state
+  const { mainPosts } = useSelector(state => state.post);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // dispatch(loginAction); //, dispatch(logoutAction), dispatch(loginAction);
+  }, []); //dependency array에 아무것도 없으면 componentDidMount랑 같음
+
   return (
     <div>
-      {dummy.isLoggedIn && <PostForm imagePaths={dummy.imagePaths} />}
-      <PostCardList mainPosts={dummy.mainPosts} />
+      {user ? (
+        <div>{user.nickname} is log In successfully!!!</div>
+      ) : (
+        <div>Logout</div>
+      )}
+      {isLoggedIn && <PostForm />}
+      <PostCardList mainPosts={mainPosts} />
     </div>
   );
 };

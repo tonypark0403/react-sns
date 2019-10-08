@@ -36,6 +36,6 @@ PostCard.propTypes = {
   }),
   content: PropTypes.string,
   img: PropTypes.string,
-  createdAt: PropTypes.object
+  createdAt: PropTypes.string
 };
 export default PostCard;

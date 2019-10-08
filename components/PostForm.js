@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 import { Form, Input, Button } from "antd";
 
-const PostForm = ({ imagePaths }) => {
+const PostForm = () => {
+  const { imagePaths } = useSelector(state => state.post);
   return (
     <Form
       style={{ marginTop: "20px", marginBottom: "20px" }}
