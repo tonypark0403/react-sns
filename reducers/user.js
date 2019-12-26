@@ -8,9 +8,12 @@ const dummyUser = {
   signUpData: {}
 };
 
-const LOG_IN = "LOG_IN";
-const LOG_OUT = "LOG_OUT";
 const SIGN_UP = "SIGN_UP";
+const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
+const LOG_IN = "LOG_IN";
+const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
+const LOG_IN_FAILURE = "LOG_IN_FAILURE";
+const LOG_OUT = "LOG_OUT";
 
 export const loginAction = id => ({
   type: LOG_IN,
