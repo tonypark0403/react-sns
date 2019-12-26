@@ -1,6 +1,9 @@
-import { all, fork, takeLatest, call, put } from "redux-saga/effects";
+import { all, fork, takeLatest, call, put, take } from "redux-saga/effects";
 import { LOG_IN, LOG_IN_SUCCESS, LOG_IN_FAILURE } from "../reducers/user";
-function loginAPI() {}
+
+function loginAPI() {
+  // request to server
+}
 
 function* login() {
   try {
@@ -18,10 +21,34 @@ function* login() {
   }
 }
 
+// for test
+function* hello() {
+  try {
+    yield put({
+      type: "HELLO_TWO"
+    });
+    console.log("hello");
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function* helloSaga() {
+  console.log("before saga");
+  while (true) {
+    yield take("HELLO_SAGA", hello);
+    console.log("hello saga");
+  }
+}
+
 function* watchLogin() {
   yield takeLatest(LOG_IN, login); // wait for LOG_IN action
 }
 
+// export default function* userSaga() {
+//   yield all([fork(watchLogin), helloSaga()]);
+// }
+
 export default function* userSaga() {
-  yield all([fork(watchLogin)]);
+  yield helloSaga();
 }

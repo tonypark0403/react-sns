@@ -13,6 +13,15 @@ const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     // dispatch(loginAction); //, dispatch(logoutAction), dispatch(loginAction);
+    dispatch({
+      type: "HELLO_SAGA"
+    });
+    dispatch({
+      type: "HELLO_SAGA"
+    });
+    dispatch({
+      type: "HELLO_SAGA"
+    });
   }, []); //dependency array에 아무것도 없으면 componentDidMount랑 같음
 
   return (
