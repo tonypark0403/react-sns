@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Form, Input, Button } from "antd";
 import Link from "next/link";
 import { useInput } from "./custom-hook/UseInput";
-import { loginAction } from "../redux/reducers/user";
+import { loginAction } from "../reducers/user";
 
 const LoginForm = () => {
   const [id, onChangeId] = useInput("");
