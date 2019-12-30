@@ -6,23 +6,13 @@ import PostCardList from "../components/PostCardList";
 import { loginAction, logoutAction } from "../reducers/user";
 
 const Home = () => {
-  //store에 state는 useSelector를 이용
-  const { isLoggedIn, user } = useSelector(state => state.user); // state는 rootReducer에 state
+  const { isLoggedIn, user } = useSelector(state => state.user); // state from rootReducer
   const { mainPosts } = useSelector(state => state.post);
 
   const dispatch = useDispatch();
   useEffect(() => {
     // dispatch(loginAction); //, dispatch(logoutAction), dispatch(loginAction);
-    dispatch({
-      type: "HELLO_SAGA"
-    });
-    dispatch({
-      type: "HELLO_SAGA"
-    });
-    dispatch({
-      type: "HELLO_SAGA"
-    });
-  }, []); //dependency array에 아무것도 없으면 componentDidMount랑 같음
+  }, []); //empty dependency array means componentDidMount
 
   return (
     <div>
